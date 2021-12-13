@@ -6,32 +6,12 @@
 <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
 </head>
 <body>
-
+<main class="container container-sm m-auto">
 	<h1>Libros</h1>
-	<main class="container">
-
-		<table class="table table-striped table-hover">
-			<thead>
-				<tr>
-					<th>Titulo</th>
-					<th>ISBN</th>
-					<th>Autor</th>
-					<th></th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr th:each="lib:${libros}">
-					<td th:text="${lib.titulo}"></td>
-					<td th:text="${lib.ISBN}"></td>
-					<td th:text="${lib.autor}"></td>
-					<td>Eliminar</td>
-				</tr>
-
-			</tbody>
-		</table>
+	<a th:href="@{/libro/listar}">Ver listado</a>
+</main>
 
 
-	</main>
 
 
 </body>
