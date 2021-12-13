@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+
+	<h1>Libros</h1>
+	<main class="container">
+
+		<table class="table table-striped table-hover">
+			<thead>
+				<tr>
+					<th>Titulo</th>
+					<th>ISBN</th>
+					<th>Autor</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="lib:${libros}">
+					<td th:text="${lib.titulo}"></td>
+					<td th:text="${lib.ISBN}"></td>
+					<td th:text="${lib.autor}"></td>
+					<td>Eliminar</td>
+				</tr>
+
+			</tbody>
+		</table>
+
+
+	</main>
+
+
+</body>
+</html>
