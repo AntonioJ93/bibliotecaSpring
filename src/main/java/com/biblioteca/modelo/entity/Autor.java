@@ -2,7 +2,6 @@ package com.biblioteca.modelo.entity;
 
 
 import javax.persistence.Column;
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;

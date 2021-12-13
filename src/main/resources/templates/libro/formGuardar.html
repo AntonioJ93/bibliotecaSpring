@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+
+	<h1 class="text-center">Guardar Libro</h1>
+	<main class="container col-md-4">
+
+		<form>
+			<div class="mb-3">
+				<label for="titulo" class="form-label">Titulo
+					</label> <input type="text" class="form-control"
+					id="titulo">
+			
+			</div>
+			<div class="mb-3">
+				<label for="isbn" class="form-label">ISBN</label>
+				<input type="text" class="form-control"
+					id="isbn">
+			</div>
+			<div class="row">
+			<div class="mb-3 col col-md-6">
+			<label class="form-check-label" for="autor">Autor</label>
+				<select class="form-control" id="autor">
+					<option th:each="aut:${autores}" th:value="${aut.id}" th:text="${aut.nombre}" th:name="autor"></option>
+				</select>
+				
+			</div>
+			<div class="mb-3 col my-auto">
+				<a class="btn btn-primary">Añadir Autor</a>				
+			</div>
+			</div>
+			
+			<button type="submit" class="btn btn-primary">Guardar</button>
+		</form>
+
+	</main>
+
+
+</body>
+</html>

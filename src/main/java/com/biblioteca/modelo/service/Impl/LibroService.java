@@ -22,9 +22,12 @@ public class LibroService implements ILibroService {
 
 	@Override
 	public void create(Libro libro) {
-		
 		repository.save(libro);
-		
+	}
+
+	@Override
+	public void createAll(List<Libro> libros) {
+		repository.saveAll(libros);		
 	}
 
 }

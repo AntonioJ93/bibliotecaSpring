@@ -8,6 +8,6 @@ public interface ILibroService {
 	
 	List<Libro> findAll();
 	void create(Libro libro);
-	
+	void createAll(List<Libro> libros);
 
 }

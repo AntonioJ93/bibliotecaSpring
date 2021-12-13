@@ -3,19 +3,19 @@ package com.biblioteca.controller;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.biblioteca.dto.AutorMapper;
 import com.biblioteca.dto.LibroMapper;
+import com.biblioteca.dto.view.AutorToViewDto;
 import com.biblioteca.dto.view.LibroToViewDto;
 import com.biblioteca.modelo.entity.Autor;
 import com.biblioteca.modelo.entity.Libro;
-import com.biblioteca.modelo.entity.Nacionalidad;
+import com.biblioteca.modelo.service.IAutorService;
 import com.biblioteca.modelo.service.ILibroService;
 
 @Controller
@@ -25,6 +25,9 @@ public class ControllerLibro {
 	@Autowired
 	private ILibroService libroService;
 
+	@Autowired
+	private IAutorService autorService;
+	
 	@GetMapping("/listar")
 	public String listaLibroToViewDto(Model model) {
 		List<Libro> libros = libroService.findAll();
@@ -33,6 +36,15 @@ public class ControllerLibro {
 		model.addAttribute("libros", listaDto);
 
 		return "/libro/lista";
+	}
+	
+	@GetMapping("/form-guardar")
+	public String formularioGuardar(Model model) {
+		List<AutorToViewDto> listAutor=new ArrayList<>();
+		List<Autor> autores=autorService.findAll();	
+		autores.forEach(aut->listAutor.add(AutorMapper.builder().autor(aut).build().autorToViewDto()));
+		model.addAttribute("autores", autores);
+		return "/libro/formGuardar";
 	}
 	
 

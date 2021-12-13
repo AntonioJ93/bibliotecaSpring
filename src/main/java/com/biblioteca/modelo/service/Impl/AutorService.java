@@ -16,14 +16,17 @@ public class AutorService implements IAutorService {
 	
 	@Override
 	public List<Autor> findAll() {
-		
 		return repository.findAll();
 	}
 
 	@Override
 	public void create(Autor autor) {
 		repository.save(autor);
-		
+	}
+
+	@Override
+	public List<Autor> findByNombre(String nombre) {
+		return repository.findByNombre(nombre);
 	}
 	
 	
