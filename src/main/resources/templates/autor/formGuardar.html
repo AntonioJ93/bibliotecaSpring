@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+</head>
+<body>
+
+	<h1 class="text-center">Nuevo Autor</h1>
+	<main class="container col-md-4">
+
+		<form th:action="@{/autor/guardar}" th:object="${autor}" th:method="post">
+			<div class="mb-3">
+				<label for="nombre" class="form-label">Nombre
+					</label> 
+					<input type="text" class="form-control" th:field="*{nombre}" id="nombre">
+			
+			</div>
+	
+			<div class="mb-3 col col-md-6">
+			<label class="form-check-label" for="nacionalidad">Nacionalidad</label>
+				<select th:field="*{nacionalidad}" class="form-control" id="nacionalidad">
+					<option th:each="nac:${nacionalidades}" th:value="${nac}" th:text="${nac.name}" th:name="nacionalidad"></option>
+				</select>
+				
+			</div>
+			
+			
+			<button type="submit" class="btn btn-primary">Guardar</button>
+		</form>
+
+	</main>
+
+
+</body>
+</html>

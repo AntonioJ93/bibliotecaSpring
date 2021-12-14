@@ -7,11 +7,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.biblioteca.dto.AutorMapper;
 import com.biblioteca.dto.LibroMapper;
 import com.biblioteca.dto.view.AutorToViewDto;
+import com.biblioteca.dto.view.LibroToControllerDto;
 import com.biblioteca.dto.view.LibroToViewDto;
 import com.biblioteca.modelo.entity.Autor;
 import com.biblioteca.modelo.entity.Libro;
@@ -44,7 +47,15 @@ public class ControllerLibro {
 		List<Autor> autores=autorService.findAll();	
 		autores.forEach(aut->listAutor.add(AutorMapper.builder().autor(aut).build().autorToViewDto()));
 		model.addAttribute("autores", autores);
+		model.addAttribute("libro", LibroToControllerDto.builder().build());
 		return "/libro/formGuardar";
+	}
+	
+	@PostMapping("/guardar")
+	public String guardarLibro(@ModelAttribute("libro") LibroToControllerDto libroToControllerDto) {
+		Libro libro=LibroMapper.builder().libroToControllerDto(libroToControllerDto).build().libroToControllerDto(autorService);
+		libroService.create(libro);
+		return "redirect:/libro/listar";
 	}
 	
 

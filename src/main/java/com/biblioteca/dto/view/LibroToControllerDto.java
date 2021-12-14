@@ -11,12 +11,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class LibroToViewDto implements Serializable{
-	
+public class LibroToControllerDto implements Serializable{
 
+	
 	private static final long serialVersionUID = 1L;
 	private Long id;
-	private String nombreAutor;
+	private Long idAutor;
 	private String ISBN;
 	private String titulo;
 }

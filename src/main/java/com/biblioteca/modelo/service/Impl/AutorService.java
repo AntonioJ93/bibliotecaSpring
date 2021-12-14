@@ -1,6 +1,7 @@
 package com.biblioteca.modelo.service.Impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,6 +28,11 @@ public class AutorService implements IAutorService {
 	@Override
 	public List<Autor> findByNombre(String nombre) {
 		return repository.findByNombre(nombre);
+	}
+
+	@Override
+	public Optional<Autor> findById(Long id) {
+		return repository.findById(id);
 	}
 	
 	

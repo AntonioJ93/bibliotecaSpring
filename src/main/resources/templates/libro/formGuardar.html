@@ -10,28 +10,27 @@
 	<h1 class="text-center">Guardar Libro</h1>
 	<main class="container col-md-4">
 
-		<form>
+		<form th:action="@{/libro/guardar}" th:object="${libro}" th:method="post">
 			<div class="mb-3">
 				<label for="titulo" class="form-label">Titulo
-					</label> <input type="text" class="form-control"
-					id="titulo">
+					</label> 
+					<input type="text" class="form-control" th:field="*{titulo}" id="titulo">
 			
 			</div>
 			<div class="mb-3">
 				<label for="isbn" class="form-label">ISBN</label>
-				<input type="text" class="form-control"
-					id="isbn">
+				<input type="text" class="form-control" th:field="*{ISBN}" id="isbn">
 			</div>
 			<div class="row">
 			<div class="mb-3 col col-md-6">
 			<label class="form-check-label" for="autor">Autor</label>
-				<select class="form-control" id="autor">
+				<select th:field="*{idAutor}" class="form-control" id="autor">
 					<option th:each="aut:${autores}" th:value="${aut.id}" th:text="${aut.nombre}" th:name="autor"></option>
 				</select>
 				
 			</div>
 			<div class="mb-3 col my-auto">
-				<a class="btn btn-primary">Añadir Autor</a>				
+				<a class="btn btn-primary" th:href="@{/autor/form-guardar}">Añadir Autor</a>				
 			</div>
 			</div>
 			
