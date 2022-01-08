@@ -25,7 +25,7 @@ public class AutorMapper {
 		return autorToViewDto;
 	}
 	
-	public Autor autorToControllerDto() {
+	public Autor ControllerDtoToautor() {
 		
 		autor=Autor.builder()
 				.nombre(autorToControllerDto.getNombre())
